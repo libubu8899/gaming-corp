@@ -1,0 +1,17 @@
+# syntax=docker/dockerfile:1
+FROM nginx:1.27-alpine
+
+WORKDIR /usr/share/nginx/html
+
+# 把整个项目文件拷进去（排除 node_modules、.git 等）
+COPY . .
+
+# 自定义 nginx 配置（支持 SPA 回退、静态资源缓存）
+RUN rm -f /etc/nginx/conf.d/default.conf && \
+    printf '%s\n' \
+    'server { listen 80; server_name _; root /usr/share/nginx/html; index index.html;' \
+    'location / { try_files $uri $uri/ /index.html; }' \
+    'location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico|woff2?)$ { expires 7d; add_header Cache-Control "public"; access_log off; }' \
+    '}' > /etc/nginx/conf.d/site.conf
+
+EXPOSE 80
