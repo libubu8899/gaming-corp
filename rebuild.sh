@@ -4,7 +4,7 @@ set -e
 PROJECT_NAME="gaming-corp"
 IMAGE_NAME="gaming-corp-web"
 CONTAINER_NAME="gaming-corp-web"
-PORT=8080
+PORT=80
 BUILD_DIR="dist"
 
 echo "=== 1. 更新代码 ==="
