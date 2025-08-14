@@ -11,7 +11,8 @@ RUN rm -f /etc/nginx/conf.d/default.conf && \
     printf '%s\n' \
     'server { listen 80; server_name _; root /usr/share/nginx/html; index index.html;' \
     'location / { try_files $uri $uri/ /index.html; }' \
-    'location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico|woff2?)$ { expires 7d; add_header Cache-Control "public"; access_log off; }' \
+    'location ~* \.css$ { expires -1; add_header Cache-Control "no-cache, must-revalidate"; }' \
+    'location ~* \.(js|png|jpg|jpeg|gif|svg|ico|woff2?)$ { expires 7d; add_header Cache-Control "public"; access_log off; }' \
     '}' > /etc/nginx/conf.d/site.conf
 
 EXPOSE 80
