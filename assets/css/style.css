@@ -248,13 +248,13 @@ html, body {
 --------------------------------------*/
 .about {
   position: relative;
+  height: 100vh;
   /*margin-bottom: 194px;*/
-
+  display: flex;
 }
 
 .about .container {
-  padding: 200px 0;
-  margin-bottom: 200px;
+  margin: auto;
 }
 
 .about-overlay {
@@ -263,6 +263,13 @@ html, body {
   right: 0;
   width: 44%;
   height: 100%;
+}
+
+.about-overlay-img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
 }
 
 /* .about-2 */
@@ -305,6 +312,7 @@ html, body {
 
 .single-about-txt {
   position: relative;
+  margin: auto;
 }
 
 .single-about-txt h2 {
