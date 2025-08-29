@@ -15,4 +15,6 @@ RUN rm -f /etc/nginx/conf.d/default.conf && \
     'location ~* \.(js|png|jpg|jpeg|gif|svg|ico|woff2?)$ { expires 7d; add_header Cache-Control "public"; access_log off; }' \
     '}' > /etc/nginx/conf.d/site.conf
 
+COPY ./google26b306e5e0c8e276.html /usr/share/nginx/html/google26b306e5e0c8e276.html
+
 EXPOSE 80
